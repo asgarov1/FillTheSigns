@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        System.out.println(fillTheSigns(100, 4,2,2, 184));
+        System.out.println(fillTheSigns(100, 4,2, 108));
     }
 
     private static String fillTheSigns(int n1, int n2, int n3, int n4, int result) {
@@ -144,21 +144,25 @@ public class Main {
                     temp = fillTheSigns(n1, n2 + n3, result);System.out.println(temp);
                     if(temp == null)
                         continue;
-                    temp = temp.substring(0,temp.lastIndexOf(' ')) + n2 + " + " + n3;
+                    String t1 = String.valueOf(n2+n3);
+                    temp = temp.replaceFirst(t1, n2 + " + " + n3);
                     break out;
                 }
                 case 5: {
                     temp = fillTheSigns(n1, n2 - n3, result);System.out.println(temp);
                     if(temp == null)
                         continue;
-                    temp = temp.substring(0,temp.lastIndexOf(' ')) + n2 + " - " + n3;
+                    String t1 = String.valueOf(n2-n3);
+                    temp = temp.replaceFirst(t1, n2 + " - " + n3);
                     break out;
                 }
                 case 6: {
                     temp = fillTheSigns(n1, n2 * n3, result);System.out.println(temp);
                     if(temp == null)
                         continue;
-                    temp = temp.substring(0,temp.lastIndexOf(' ')) + n2 + " * " + n3;
+
+                    String t1 = String.valueOf(n2*n3);
+                    temp = temp.replaceFirst(t1, n2 + " * " + n3);
                     break out;
                 }
                 case 7: {
@@ -168,7 +172,8 @@ public class Main {
                     temp = fillTheSigns(n1, n2 / n3, result);System.out.println(temp);
                     if(temp == null)
                         continue;
-                    temp = temp.substring(0,temp.lastIndexOf(' ')) + n2 + " / " + n3;
+                    String t1 = String.valueOf(n2/n3);
+                    temp = temp.replaceFirst(t1, n2 + " / " + n3);
                     break out;
                 }
             }
