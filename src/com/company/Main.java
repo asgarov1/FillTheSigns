@@ -4,8 +4,138 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        System.out.println(fillTheSigns(3,2, 2,250, 4, 1003));
+        System.out.println(fillTheSigns(3,250, 250, 1,4));
     }
+
+    private static String fillTheSigns(int n1, int n2, int n3, int n4, int n5, int n6, int result) {
+        String sign;
+        String temp = null;
+
+        for (int i = 0; i < 20; i++) {
+            switch (i) {
+                case 0: {
+                    temp = fillTheSigns(n1 + n2, n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "+";
+                    String t1 = String.valueOf(n1+n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 1: {
+                    temp = fillTheSigns(n1 - n2, n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "-";
+                    String t1 = String.valueOf(n1-n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 2: {
+                    temp = fillTheSigns(n1 * n2, n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "*";
+                    String t1 = String.valueOf(n1*n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 3: {
+                    if(n2 != 0) {
+                        temp = fillTheSigns(n1 / n2, n3, n4, n5, n6, result);
+                    }
+                    if(temp==null)
+                        continue;
+
+
+                    sign = "/";
+                    if(n2==0) continue;
+                    String t1 = String.valueOf(n1/n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 4: {
+                    temp = fillTheSigns(n1, n2 + n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "+";
+                    String t1 = String.valueOf(n2+n3);
+                    return temp.replaceFirst(t1, n2 + " " + sign + " " +  n3);
+                }
+                case 5: {
+                    temp = fillTheSigns(n1, n2 - n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "-";
+                    String t1 = String.valueOf(n2-n3);
+                    return temp.replaceFirst(t1, n2 + " " + sign + " " +  n3);
+                }
+                case 6: {
+                    temp = fillTheSigns(n1, n2 * n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "*";
+                    String t1 = String.valueOf(n2*n3);
+                    return temp.replaceFirst(t1, n2 + " " + sign + " " +  n3);
+                }
+                case 7: {
+                    temp = fillTheSigns(n1, n2 / n3, n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "/";
+                    String t1 = String.valueOf(n2/n3);
+                    return temp.replaceFirst(t1, n2 + " " + sign + " " +  n3);
+                }
+
+
+                case 8: {
+                    temp = fillTheSigns(n1, n2, n3 + n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "+";
+                    String t1 = String.valueOf(n3+n4);
+                    return temp.replaceFirst(t1, n3 + " " + sign + " " +  n4);
+                }
+                case 9: {
+                    temp = fillTheSigns(n1, n2, n3 - n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "-";
+                    String t1 = String.valueOf(n3-n4);
+                    return temp.replaceFirst(t1, n3 + " " + sign + " " +  n4);
+                }
+                case 10: {
+                    temp = fillTheSigns(n1, n2, n3 * n4, n5, n6, result);
+
+                    if(temp==null)
+                        continue;
+
+                    sign = "*";
+                    String t1 = String.valueOf(n3*n4);
+                    return temp.replaceFirst(t1, n3 + " " + sign + " " +  n4);
+
+                }
+                case 11: {
+                    temp = fillTheSigns(n1, n2, n3 / n4, n5, n6, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "/";
+                    String t1 = String.valueOf(n3/n4);
+                    return temp.replaceFirst(t1, n3 + " " + sign + " " +  n4);
+                }
+
+
+            }
+        }
+        return temp;
+    }
+
 
     //--------------------------------------5 digits------------------------------------
     private static String fillTheSigns(int n1, int n2, int n3, int n4, int n5, int result) {
