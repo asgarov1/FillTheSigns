@@ -4,9 +4,64 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        System.out.println(fillTheSigns(6,3,2, 250, 1, 30,300));
+        System.out.println(fillTheSigns(6,3,2, 40, 250, 1,60,290));
         //in case there is no solution found, it returns null
     }
+
+
+    //-------------------------------------------7 digits------------------------------------------
+    private static String fillTheSigns(int n1, int n2, int n3, int n4, int n5, int n6, int n7, int result) {
+        String sign;
+        String temp = null;
+
+        for (int i = 0; i < 4; i++) {
+            switch (i) {
+                case 0: {
+                    temp = fillTheSigns(n1 + n2, n3, n4, n5, n6, n7, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "+";
+                    String t1 = String.valueOf(n1+n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 1: {
+                    temp = fillTheSigns(n1 - n2, n3, n4, n5, n6, n7, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "-";
+                    String t1 = String.valueOf(n1-n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 2: {
+                    temp = fillTheSigns(n1 * n2, n3, n4, n5, n6, n7, result);
+                    if(temp==null)
+                        continue;
+
+                    sign = "*";
+                    String t1 = String.valueOf(n1*n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+                case 3: {
+                    if(n2 != 0) {
+                        temp = fillTheSigns(n1 / n2, n3, n4, n5, n6, n7, result);
+                    }
+                    if(temp==null)
+                        continue;
+
+
+                    sign = "/";
+                    if(n2==0 || n1%n2!=0) continue;
+                    String t1 = String.valueOf(n1/n2);
+                    return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
+                }
+            }
+        }
+        return temp;
+    }
+
+
 
     //-------------------------------------------6 digits------------------------------------------
     private static String fillTheSigns(int n1, int n2, int n3, int n4, int n5, int n6, int result) {
@@ -51,7 +106,7 @@ public class Main {
 
 
                     sign = "/";
-                    if(n2==0) continue;
+                    if(n2==0 || n1%n2!=0) continue;
                     String t1 = String.valueOf(n1/n2);
                     return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
                 }
@@ -104,7 +159,7 @@ public class Main {
 
 
                     sign = "/";
-                    if(n2==0) continue;
+                    if(n2==0 || n1%n2!=0) continue;
                     String t1 = String.valueOf(n1/n2);
                     return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
                 }
@@ -158,7 +213,7 @@ public class Main {
 
 
                     sign = "/";
-                    if(n2==0) continue;
+                    if(n2==0 || n1%n2!=0) continue;
                     String t1 = String.valueOf(n1/n2);
                     return temp.replaceFirst(t1, n1 + " " + sign + " " +  n2);
                 }
@@ -194,7 +249,7 @@ public class Main {
                     break out;
                 }
                 case 3: {
-                    if (n2 == 0)
+                    if (n2 == 0 || n1%n2!=0)
                         continue ;
 
                     temp = fillTheSigns(n1/n2, n3, result);
